@@ -10,11 +10,12 @@
 # TODOs
 ###############################################################
 
-# Connect with MYLAR to add comic series to want list
+# ✓ Connect with MYLAR to add comic series to want list
 # Connect to ComicVine to search for comic series, not comic issue
 # Build proper regex for series name
 # Build error handling and odd comic file names
 #     Offload error files, log errors
+# Capture error responses for Mylar3
 
 ###############################################################
 # Variables
@@ -40,7 +41,11 @@ mkdir -p $error_dir
 }
 
 function mylar_add_comic() {
-  callAPI = $mylar_url "/addbyid?comicid=" $comicid "&calledby=True"
+  callAPI = $mylar_url "/api?apikey=" $mylar_api "&cmd=addComic&id=" $comicid
+  result=$(curl -X GET --header "Accept: */*" $callAPI)
+  # Capture errors from non 'OK' response
+  echo "Response from Mylar"
+  echo $result
 }
 
 #function get_calishot_db() {
@@ -85,13 +90,5 @@ function mylar_add_comic() {
 ################################################################
 ## Main
 ################################################################
-#
-#dependencies
-#get_calishot_db
-#
-#parse_for_new_calibredb $tmp_dir/$eng_db $tmp_dir/$eng_list_a
-#remove_dupes $tmp_dir/$eng_list_a $tmp_dir/$eng_list_c
-#calibredb_export_loop $tmp_dir/$eng_list_c
-#
-#parse_for_old_calibredb $tmp_dir/$eng_db $tmp_dir/$eng_list_d
-#wget_loop $tmp_dir/$eng_list_d
+
+mylar_add_comic
