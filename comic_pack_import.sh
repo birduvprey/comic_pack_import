@@ -60,45 +60,6 @@ function get_comic_id_json($json_text) {
   jq -r
 }
 
-#function get_calishot_db() {
-#  # TODO: This should be made dynamic by parsing the reddit post's html for the links.
-#  if [ ! -f "$tmp_dir/$eng_db" ]; then
-#    if [ ! -f "$tmp_dir/$eng_db_zip" ]; then
-#      wget "$eng_db_link" --directory-prefix "$tmp_dir/"
-#    fi
-#    7za x "$tmp_dir/$eng_db_zip" -o"$tmp_dir/"
-#  fi
-#  if [ ! -f "$tmp_dir/$non_eng_db" ]; then
-#    if [ ! -f "$tmp_dir/$non_eng_db_zip" ]; then
-#      wget "$non_eng_db_link" --directory-prefix "$tmp_dir/"
-#    fi
-#    7za x "$tmp_dir/$non_eng_db_zip" -o"$tmp_dir/"
-#  fi
-#}
-#
-
-#function wget_loop() {
-#  # Feed list to wget loop
-#  #  echo "Mapping old file to array"
-#  mapfile -t library_list <"$1" # Map $1 file to list A
-#  #  echo "Iterating old array"
-#  for link in "${library_list[@]}"; do # for each entry in List A
-#    # $1=IP:PORT#LIBRARY_ID
-#    # $2=library_specific_dir
-#    book_id=$(echo "$link" | sed -E "s|.*?/([[:digit:]]+)|\1|g")
-#    library_specific_dir=$(echo "$link" | sed -E 's|(http://\|https://)(.*)\/get.*|\2|g' | sed -E 's/([\\/&:"*?<>|]+)/_/g')
-#    library_specific_dir="$dl_dir/$library_specific_dir/$book_id"
-#    mkdir -p "$library_specific_dir"
-#    echo "'$link' will save to '$library_specific_dir'"
-#    wget "$link" \
-#    --content-disposition \
-#    --no-clobber \
-#    -P "$library_specific_dir" \
-#    && echo "Download of $link successful." \
-#    && sed -E "s|$link\n||g" -i "$1" -z
-#  done
-#}
-
 ################################################################
 ## Main
 ################################################################
