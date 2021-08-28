@@ -10,12 +10,12 @@
 # TODOs
 ###############################################################
 
-# ✓ Connect with MYLAR to add comic series to want list
-# Connect to ComicVine to search for comic series, not comic issue
-# Build proper regex for series name
-# Build error handling for odd comic file names
-#     Offload error files, log errors
-# Capture error responses for Mylar3
+# TODO: ✓ Connect with MYLAR to add comic series to want list
+# TODO: Connect to ComicVine to search for comic series, not comic issue
+# TODO: Build proper regex for series name
+# TODO: Build error handling for odd comic file names
+# TODO:     Offload error files, log errors
+# TODO: Capture error responses for Mylar3
 
 ###############################################################
 # Variables
