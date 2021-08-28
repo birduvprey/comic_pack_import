@@ -13,7 +13,7 @@
 # ✓ Connect with MYLAR to add comic series to want list
 # Connect to ComicVine to search for comic series, not comic issue
 # Build proper regex for series name
-# Build error handling and odd comic file names
+# Build error handling for odd comic file names
 #     Offload error files, log errors
 # Capture error responses for Mylar3
 
@@ -29,6 +29,7 @@ cv_api="XXXXXXXX" # Your ComicVine API key (https://comicvine.gamespot.com/api/)
 
 #### TEST VARIABLES ####
 comicid="4050-37737"
+search_query="america%20chavez%20made%20in%20the%20usa%202021"
 
 ###############################################################
 # Functions
@@ -46,6 +47,17 @@ function mylar_add_comic() {
   # Capture errors from non 'OK' response
   echo "Response from Mylar"
   echo $result
+}
+
+function cv_search_query() {
+  callAPI = "https://comicvine.gamespot.com/api/search/?api_key=" $cv_api "&format=json&resources=volume&query=" \
+    $search_query
+  result=$(curl -X GET --header "Accetps: */*" $callAPI)
+  search_comic_id= jq -r '.[] | .id'
+}
+
+function get_comic_id_json($json_text) {
+  jq -r
 }
 
 #function get_calishot_db() {
