@@ -39,7 +39,7 @@ pack_dir = os.path.join(CWD,"packs")  # Root directory where your unsorted comic
 proc_dir = os.path.join(CWD,"process")  # Directory to move files for post-processing in Mylar
 error_dir = os.path.join(CWD,"errors")  # Directory to store errored comic files
 filename_search = []  # Create an list to store file name searches for CV search
-headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"}
+headers = {"User-Agent": "Anything apparently. Keep it under 120 characters to appease PEP 8 though."}
 
 ###############################################################
 # Test Variables
