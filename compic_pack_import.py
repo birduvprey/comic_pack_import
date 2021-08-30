@@ -31,7 +31,7 @@ import requests
 # Variables
 ###############################################################
 
-from variables import mylar_url, mylar_api, cv_api
+from variables import mylar_url, mylar_api, cv_api  # Make sure you personalize variables.py for these
 CWD = os.getcwd()
 pack_dir = os.path.join(CWD, "packs")  # Root directory where your unsorted comic packs reside
 proc_dir = os.path.join(CWD, "process")  # Directory to move files for post-processing in Mylar
@@ -40,37 +40,31 @@ filename_search = []  # Create an list to store file name searches for CV search
 headers = {"User-Agent": "Anything apparently. Keep it under 120 characters to appease PEP 8 though."}
 
 ###############################################################
-# Test Variables
-###############################################################
-comic_id = "4050-37737"
-search_query = "america,chavez,made,in,the,usa,2021"
-
-###############################################################
 # Functions
 ###############################################################
 
 
-def mylar_add_comic():
-    response = requests.get(mylar_url + "/api?apikey=" + mylar_api + "&cmd=addComic&id=" + comic_id)
+def mylar_add_comic(a_comic_id):
+    response = requests.get(mylar_url + "/api?apikey=" + mylar_api + "&cmd=addComic&id=" + a_comic_id)
     print(response)
 
 
-def cv_search_query():
+def cv_search_query(query):
 
     response = requests.get("https://comicvine.gamespot.com/api/search/?api_key=" + cv_api +
                             "&format=json&resources=volume&query=" + search_query +
                             "&field_list=name,id,start_year,publisher&limit=1", headers=headers)
 
     if response.status_code != 200:
-        print("Error while searching Comic Vine for: '" + search_query + "' Exiting.")
+        print("Error while searching Comic Vine for: '" + query + "' Exiting.")
         exit(1)
 
-    print(response.json().get('results')[0].get('id'))
+    return response.json().get('results')[0].get('id')
 
 
 ###############################################################
 # Main
 ###############################################################
 
-# mylar_add_comic()
-cv_search_query()
+comic_id=cv_search_query("america,chavez,made,in,the,usa,2021")
+mylar_add_comic(comic_id)
