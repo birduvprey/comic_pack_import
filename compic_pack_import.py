@@ -16,7 +16,7 @@
 # TODO: Build error handling for odd comic file names
 # TODO:     Offload error files, log errors
 # TODO: Capture error responses for Mylar3
-# TODO: Sub process regex to remove symbols first, then any number of psaces with ','
+# TODO: Sub process regex to remove symbols first, then any number of spaces with ','
 
 ###############################################################
 # Imports
@@ -34,9 +34,9 @@ import wget
 
 from variables import mylar_url, mylar_api, cv_api
 CWD = os.getcwd()
-pack_dir = os.path.join(CWD,"packs")  # Root directory where your unsorted comic packs reside
-proc_dir = os.path.join(CWD,"process")  # Directory to move files for post-processing in Mylar
-error_dir = os.path.join(CWD,"errors")  # Directory to store errored comic files
+pack_dir = os.path.join(CWD, "packs")  # Root directory where your unsorted comic packs reside
+proc_dir = os.path.join(CWD, "process")  # Directory to move files for post-processing in Mylar
+error_dir = os.path.join(CWD, "errors")  # Directory to store errored comic files
 filename_search = []  # Create an list to store file name searches for CV search
 headers = {"User-Agent": "Anything apparently. Keep it under 120 characters to appease PEP 8 though."}
 
@@ -49,6 +49,7 @@ search_query = "america,chavez,made,in,the,usa,2021"
 ###############################################################
 # Functions
 ###############################################################
+
 
 def mylar_add_comic():
     response = requests.get(mylar_url + "/api?apikey=" + mylar_api + "&cmd=addComic&id=" + comic_id)
