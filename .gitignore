@@ -1,1 +1,4 @@
 .idea/**
+
+# A file to keep persistant api keys outside of the main script.
+/variables.py

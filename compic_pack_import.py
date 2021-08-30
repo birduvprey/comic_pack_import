@@ -28,19 +28,16 @@ import wget
 import re
 import requests
 import json
+from variables import cv_api, mylar_api
 
 ###############################################################
 # Variables
 ###############################################################
 
 CWD = os.getcwd()
-mylar_url = "http://127.0.0.1:8090"  # URL to your Mylar3 installation, to include port number
 pack_dir = "./packs"  # Root directory where your unsorted comic packs reside
 proc_dir = "./process"  # Directory to move files for post-processing in Mylar
 error_dir = "./errors"  # Directory to store errored comic files
-# TODO: the following two vars should be contained in a different file, and then imported. So that we can add that file to .gitignore and not have to change them every time we pull
-mylar_api = "XXXXXXXX"  # Your Mylar3 installation's API key (Settings->Web Interface->Mylar API Key)
-cv_api = "XXXXXXXX"  # Your ComicVine API key (https://comicvine.gamespot.com/api/)
 filename_search = ()  # Create an array to store file name searches for CV search
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"}
 
