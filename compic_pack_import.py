@@ -66,8 +66,7 @@ def cv_search_query():
         print("Error while searching Comic Vine for: '" + search_query + "' Exiting.")
         exit(1)
 
-    json_response = response.json()
-    print(json_response.get('results')[0].get('id'))
+    print(response.json().get('results')[0].get('id'))
 
 
 ###############################################################
