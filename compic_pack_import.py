@@ -24,16 +24,15 @@
 
 import logging
 import os
-import wget
 import re
 import requests
-import json
-from variables import mylar_url, mylar_api, cv_api
+import wget
 
 ###############################################################
 # Variables
 ###############################################################
 
+from variables import mylar_url, mylar_api, cv_api
 CWD = os.getcwd()
 pack_dir = os.path.join(CWD,"packs")  # Root directory where your unsorted comic packs reside
 proc_dir = os.path.join(CWD,"process")  # Directory to move files for post-processing in Mylar
