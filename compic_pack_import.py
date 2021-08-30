@@ -28,7 +28,7 @@ import wget
 import re
 import requests
 import json
-from variables import cv_api, mylar_api
+from variables import mylar_url, mylar_api, cv_api
 
 ###############################################################
 # Variables
