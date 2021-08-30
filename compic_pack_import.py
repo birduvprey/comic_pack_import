@@ -10,7 +10,7 @@
 # TODOs
 ###############################################################
 
-# TODO: Connect with MYLAR to add comic series to want list
+# TODO: ✓ Connect with MYLAR to add comic series to want list
 # TODO: Connect to ComicVine to search for comic series, not comic issue
 # TODO: Build proper regex for series name
 # TODO: Build error handling for odd comic file names
@@ -27,6 +27,7 @@ import os
 import wget
 import re
 import requests
+import json
 
 ###############################################################
 # Variables
@@ -40,12 +41,13 @@ error_dir = "./errors"  # Directory to store errored comic files
 mylar_api = "XXXXXXXX"  # Your Mylar3 installation's API key (Settings->Web Interface->Mylar API Key)
 cv_api = "XXXXXXXX"  # Your ComicVine API key (https://comicvine.gamespot.com/api/)
 filename_search = ()  # Create an array to store file name searches for CV search
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"}
 
 ###############################################################
 # Test Variables
 ###############################################################
 comicid = "4050-37737"
-search_query = "america,chavez,made,in,the,usa%,2021"
+search_query = "america,chavez,made,in,the,usa,2021"
 
 ###############################################################
 # Functions
@@ -57,7 +59,23 @@ def mylar_add_comic():
     print(response)
 
 
-mylar_add_comic()
+def cv_search_query():
+
+    response = requests.get("https://comicvine.gamespot.com/api/search/?api_key=" + cv_api +
+                            "&format=json&resources=volume&query=" + search_query +
+                            "&field_list=name,id,start_year,publisher&limit=1", headers=headers)
+
+    if response.status_code != 200:
+        print("Error handling")
+
+    json_response = response.json()
+    print(json_response['results']['id'])
+
+
+cv_search_query()
+
+
+# mylar_add_comic()
 ###############################################################
 # PREVIOUS BASH SCRIPTS
 
