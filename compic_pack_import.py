@@ -63,7 +63,8 @@ def cv_search_query():
                             "&field_list=name,id,start_year,publisher&limit=1", headers=headers)
 
     if response.status_code != 200:
-        print("Error handling")
+        print("Error while searching Comic Vine for: '" + search_query + "' Exiting.")
+        exit(1)
 
     json_response = response.json()
     print(json_response.get('results')[0].get('id'))
