@@ -35,9 +35,9 @@ from variables import cv_api, mylar_api
 ###############################################################
 
 CWD = os.getcwd()
-pack_dir = "./packs"  # Root directory where your unsorted comic packs reside
-proc_dir = "./process"  # Directory to move files for post-processing in Mylar
-error_dir = "./errors"  # Directory to store errored comic files
+pack_dir = os.path.join(CWD,"packs")  # Root directory where your unsorted comic packs reside
+proc_dir = os.path.join(CWD,"process")  # Directory to move files for post-processing in Mylar
+error_dir = os.path.join(CWD,"errors")  # Directory to store errored comic files
 filename_search = ()  # Create an array to store file name searches for CV search
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"}
 
