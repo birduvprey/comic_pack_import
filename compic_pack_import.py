@@ -44,7 +44,7 @@ headers = {"User-Agent": "Anything apparently. Keep it under 120 characters to a
 ###############################################################
 # Test Variables
 ###############################################################
-comicid = "4050-37737"
+comic_id = "4050-37737"
 search_query = "america,chavez,made,in,the,usa,2021"
 
 ###############################################################
@@ -52,7 +52,7 @@ search_query = "america,chavez,made,in,the,usa,2021"
 ###############################################################
 
 def mylar_add_comic():
-    response = requests.get(mylar_url + "/api?apikey=" + mylar_api + "&cmd=addComic&id=" + comicid)
+    response = requests.get(mylar_url + "/api?apikey=" + mylar_api + "&cmd=addComic&id=" + comic_id)
     print(response)
 
 
