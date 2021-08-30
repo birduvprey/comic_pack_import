@@ -60,6 +60,28 @@ function get_comic_id_json($json_text) {
   jq -r
 }
 
+# function
+# cv_search_query()
+# {
+#     echo
+# "$(curl -X GET --header "
+# Accept: * / *" "
+# https: // comicvine.gamespot.com / api / search /?api_key =$cv_api & format = json
+# " \
+#       " & resources = volume & query =$search_query & field_list = name, id, start_year, publisher & limit = 1
+# ") | jq -r '.results[] | .id'"
+#
+# }
+#
+# function
+# filename_parse()
+# {
+# for file in "$pack_dir" / *
+#             do
+# pcregrep -o1 -o4 -e '(.+?)( |)(\d{3,}|\d+ \(of \d+\)|) \(.*?(\d{4})\).*?(\n|$)' "$file"
+# done
+# }
+
 ################################################################
 ## Main
 ################################################################

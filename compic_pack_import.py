@@ -51,7 +51,6 @@ search_query = "america,chavez,made,in,the,usa,2021"
 # Functions
 ###############################################################
 
-
 def mylar_add_comic():
     response = requests.get(mylar_url + "/api?apikey=" + mylar_api + "&cmd=addComic&id=" + comicid)
     print(response)
@@ -70,32 +69,9 @@ def cv_search_query():
     print(json_response.get('results')[0].get('id'))
 
 
-cv_search_query()
-
+###############################################################
+# Main
+###############################################################
 
 # mylar_add_comic()
-###############################################################
-# PREVIOUS BASH SCRIPTS
-
-# function
-# cv_search_query()
-# {
-#     echo
-# "$(curl -X GET --header "
-# Accept: * / *" "
-# https: // comicvine.gamespot.com / api / search /?api_key =$cv_api & format = json
-# " \
-#       " & resources = volume & query =$search_query & field_list = name, id, start_year, publisher & limit = 1
-# ") | jq -r '.results[] | .id'"
-#
-# }
-#
-# function
-# filename_parse()
-# {
-# for file in "$pack_dir" / *
-#             do
-# pcregrep -o1 -o4 -e '(.+?)( |)(\d{3,}|\d+ \(of \d+\)|) \(.*?(\d{4})\).*?(\n|$)' "$file"
-# done
-# }
-###############################################################
+cv_search_query()
