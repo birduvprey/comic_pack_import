@@ -38,6 +38,7 @@ mylar_url = "http://127.0.0.1:8090"  # URL to your Mylar3 installation, to inclu
 pack_dir = "./packs"  # Root directory where your unsorted comic packs reside
 proc_dir = "./process"  # Directory to move files for post-processing in Mylar
 error_dir = "./errors"  # Directory to store errored comic files
+# TODO: the following two vars should be contained in a different file, and then imported. So that we can add that file to .gitignore and not have to change them every time we pull
 mylar_api = "XXXXXXXX"  # Your Mylar3 installation's API key (Settings->Web Interface->Mylar API Key)
 cv_api = "XXXXXXXX"  # Your ComicVine API key (https://comicvine.gamespot.com/api/)
 filename_search = ()  # Create an array to store file name searches for CV search
@@ -69,7 +70,7 @@ def cv_search_query():
         print("Error handling")
 
     json_response = response.json()
-    print(json_response['results']['id'])
+    print(json_response.get('results')[0].get('id'))
 
 
 cv_search_query()
