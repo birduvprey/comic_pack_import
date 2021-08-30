@@ -26,7 +26,6 @@ import logging
 import os
 import re
 import requests
-import wget
 
 ###############################################################
 # Variables
