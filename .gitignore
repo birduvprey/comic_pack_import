@@ -1,3 +1,7 @@
+###############################################################
+# Project specific ignores
+###############################################################
+
 # Ignore Jetbrain's PyCharm project settings folder. These are generally developer specific.
 .idea/**
 
@@ -137,3 +141,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+###############################################################
+# Newly added ignores
+###############################################################
