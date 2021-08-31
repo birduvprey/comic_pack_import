@@ -52,7 +52,7 @@ function mylar_add_comic() {
 function cv_search_query() {
   callAPI = "https://comicvine.gamespot.com/api/search/?api_key=" $cv_api "&format=json&resources=volume&query=" \
     $search_query
-  result=$(curl -X GET --header "Accetps: */*" $callAPI)
+  result=$(curl -X GET --header "Accepts: */*" $callAPI)
   search_comic_id= jq -r '.[] | .id'
 }
 
