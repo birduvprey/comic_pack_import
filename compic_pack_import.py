@@ -47,8 +47,8 @@ headers = {"User-Agent": "Anything apparently. Keep it under 120 characters to a
 
 
 def mylar_add_comic(a_comic_id):
-    response = requests.get(mylar_url + "/api?apikey=" + mylar_api + "&cmd=addComic&id=" + a_comic_id)
-    print(response)
+    response = requests.get(mylar_url + "/api?apikey=" + mylar_api + "&cmd=addComic&id=" + str(a_comic_id))
+#    print(response)
 
 
 def cv_search_query():
