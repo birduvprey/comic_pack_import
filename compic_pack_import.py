@@ -53,7 +53,8 @@ def mylar_add_comic(a_comic_id):
 
 def cv_search_query():
     for filename in os.listdir(pack_dir):
-        reg_file = re.sub(r"(.+?)( |)(\d{3,}|\d+ \(of \d+\)|) \(.*?(\d{4})\).*?(\n|$)", r"\1,\3,\4", filename)
+        reg_file = re.sub(r"[!._\-\/?'()&]", ' ', re.sub(r"(.+?)( |)(\d{3,}|\d+ \(of \d+\)|) \(.*?(\d{4})\).*?(\n|$)",
+                                                       r"\1,\3,\4", filename))
         response = requests.get("https://comicvine.gamespot.com/api/search/?api_key=" + cv_api +
                                 "&format=json&resources=volume&query=" + reg_file +
                                 "&field_list=name,id,start_year,publisher&limit=1", headers=headers)
@@ -66,8 +67,8 @@ def cv_search_query():
         #    return response.json().get('results')[0].get('id')
         filename_search.append(filename + " | " + reg_file + " | " + compare_data + " | " + str(comic_id))
 #        print(response.json())
-        print(filename + " | " + reg_file + " | " + compare_data + " | " + str(comic_id) + " | "
-              + str(difflib.SequenceMatcher(None, reg_file, compare_data).ratio()))
+#        print(filename + " | " + reg_file + " | " + compare_data + " | " + str(comic_id) + " | "
+#              + str(difflib.SequenceMatcher(None, reg_file, compare_data).ratio()))
 
 
 cv_search_query()
