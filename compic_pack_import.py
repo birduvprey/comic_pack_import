@@ -11,12 +11,12 @@
 ###############################################################
 
 # TODO: ✓ Connect with MYLAR to add comic series to want list
-# TODO: Connect to ComicVine to search for comic series, not comic issue
-# TODO: Build proper regex for series name
+# TODO: ✓ Connect to ComicVine to search for comic series, not comic issue
+# TODO: ✓ Build proper regex for series name
 # TODO: Build error handling for odd comic file names
 # TODO:     Offload error files, log errors
 # TODO: Capture error responses for Mylar3
-# TODO: Sub process regex to remove symbols first, then any number of spaces with ','
+# TODO: ✓ Sub process regex to remove symbols first, then any number of spaces with ','
 
 ###############################################################
 # Imports
@@ -25,7 +25,7 @@
 import os
 import re
 import requests
-import difflib
+#  import difflib
 
 ###############################################################
 # Variables
@@ -37,7 +37,7 @@ CWD = os.getcwd()
 pack_dir = os.path.join(CWD, "packs")  # Root directory where your unsorted comic packs reside
 proc_dir = os.path.join(CWD, "process")  # Directory to move files for post-processing in Mylar
 error_dir = os.path.join(CWD, "errors")  # Directory to store errored comic files
-filename_search = []  # Create an list to store file name searches for CV search
+#  filename_search = []  # Create an list to store file name searches for CV search
 headers = {"User-Agent": "Anything apparently. Keep it under 120 characters to appease PEP 8 though."}
 
 
@@ -62,19 +62,20 @@ def cv_search_query():
             print("Error while searching Comic Vine for: '" + reg_file + "' Exiting.")
             exit(1)
         comic_id = response.json().get('results')[0].get('id')
-        compare_data = str(response.json().get('results')[0].get('name')) + "," + \
-                       str(response.json().get('results')[0].get('start_year'))
-        #    return response.json().get('results')[0].get('id')
+        mylar_add_comic(comic_id)
+
+
+#        compare_data = str(response.json().get('results')[0].get('name')) + "," + \
+#                       str(response.json().get('results')[0].get('start_year'))
+#            return response.json().get('results')[0].get('id')
 #        filename_search.append(filename + " | " + reg_file + " | " + compare_data + " | " + str(comic_id))
 #        print(response.json())
 #        print(filename + " | " + reg_file + " | " + compare_data + " | " + str(comic_id) + " | "
 #              + str(difflib.SequenceMatcher(None, reg_file, compare_data).ratio()))
 
 
-cv_search_query()
 ###############################################################
 # Main
 ###############################################################
 
-# comic_id = cv_search_query("america,chavez,made,in,the,usa,2021")
-# mylar_add_comic(comic_id)
+cv_search_query()
