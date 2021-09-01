@@ -65,7 +65,7 @@ def cv_search_query():
         compare_data = str(response.json().get('results')[0].get('name')) + "," + \
                        str(response.json().get('results')[0].get('start_year'))
         #    return response.json().get('results')[0].get('id')
-        filename_search.append(filename + " | " + reg_file + " | " + compare_data + " | " + str(comic_id))
+#        filename_search.append(filename + " | " + reg_file + " | " + compare_data + " | " + str(comic_id))
 #        print(response.json())
 #        print(filename + " | " + reg_file + " | " + compare_data + " | " + str(comic_id) + " | "
 #              + str(difflib.SequenceMatcher(None, reg_file, compare_data).ratio()))
